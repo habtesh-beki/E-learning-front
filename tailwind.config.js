@@ -8,7 +8,10 @@ export default {
     extend: {
       colors:{
         bg_photo:'#F8F9FB',
-        color_text:'#81878C'
+        color_text:'#81878C',
+        bg_btn:'#E4E8EB',
+        bg_hover:'',
+        bg_focus:'#2D2F31'
       }
     },
   },
