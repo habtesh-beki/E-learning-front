@@ -1,0 +1,27 @@
+[
+    {
+      "comment": "Bekisen courses have helped me upskill in ways I never thought possible. The flexibility is unmatched!",
+      "name": "Sarah Collins",
+      "img": "/images/person/person1.png",
+      "title": "CTO of BlueTech Solutions"
+    },
+    {
+      "comment": "Thanks to Bekisen, I was able to master JavaScript in just a few months. Highly recommended!",
+      "name": "Michael Tanner",
+      "img": "/images/person/person2.jfif",
+      "title": "Lead Developer at CodeCrafters Inc"
+    },
+    {
+      "comment": "The course quality on Bekisen is exceptional. It has changed the way I approach learning new skills.",
+      "name": "Emily Warren",
+      "img": "/images/person/person3.jpg",
+      "title": "CEO of Horizon Industries"
+    },
+    {
+      "comment": "I found the instructors on Bekisen to be extremely knowledgeable and approachable. Its a game-changer!",
+      "name": "Robert Kingsley",
+      "img": "/images/person/person4.webp",
+      "title": "Founder of InnovateNow"
+    }
+  ]
+  
