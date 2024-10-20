@@ -1,0 +1,150 @@
+[
+    {
+      "title": "Angular - The Complete Guide (2024 Edition)",
+      "img": "/images/courseImg/Angular1.jpg",
+      "price": "$120.98",
+      "field":"Web Development",
+      "instructor": "Tomas Devid",
+      "desc": "Angular is a comprehensive JavaScript framework for building complex, enterprise-level web applications. In this course, you will learn the essentials of Angular, including components, services, routing, and data binding, to develop scalable and maintainable apps."
+    },
+    {
+      "title": "The Complete JavaScript Course 2024: From Zero to Expert!",
+      "img": "/images/courseImg/Javascript.jpg",
+      "price": "$130.65",
+      "field":"Web Development",
+      "instructor": "Jonas Miki",
+      "desc": "JavaScript is the language of the web, used to make web pages interactive. This course covers the basics of JavaScript, including variables, functions, DOM manipulation, and events, to create dynamic and responsive websites."
+    },
+    {
+      "title": "100 Days of Code: The Complete Python Pro Bootcamp",
+      "img": "/images/courseImg/python1.webp",
+      "price": "$100.90",
+      "field":"Web Development",
+      "instructor": "Mosh Hamidani",
+      "desc": "Python is a beginner-friendly programming language known for its simplicity and versatility. In this course, you will learn the fundamentals of Python, including variables, data types, loops, and functions, and how to use Python to solve real-world problems."
+    },
+    {
+      "title": "React - The Complete Guide 2024 (incl. Next.js, Redux)",
+      "img": "/images/courseImg/reactjs1.jpg",
+      "price": "$90.87",
+      "field":"Web Development",
+      "instructor": "Jonas",
+      "desc": "ReactJS is a powerful JavaScript library for building user interfaces, particularly for single-page applications. This course introduces React fundamentals like components, state, and props, allowing you to build dynamic, scalable web applications."
+    },
+    {
+      "title": "The complete 2024 web development bootcamp",
+      "img": "/images/courseImg/webdev.jpg",
+      "price": "$140.45",
+      "field":"Web Development",
+      "instructor": "Mikila Ted",
+      "desc": "This course provides an overview of web development, covering both front-end and back-end technologies. You will learn how to build and deploy full-stack web applications, starting with HTML/CSS/JavaScript for the front-end and progressing to server-side programming and databases."
+    },
+    {
+      "title": "HTML and CSS from scratch",
+      "img": "/images/courseImg/html.png",
+      "price": "$78.98",
+      "field":"Web Development",
+      "instructor": "Nikola",
+      "desc": "HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) are the building blocks of web design. In this course, you will learn how to structure web pages with HTML and style them beautifully with CSS to create modern, responsive websites."
+    },
+    {
+      "title": "UI/UX Design Fundamentals",
+      "img": "/images/courseImg/Design1.jpg",
+      "price": "$89.99",
+      "field": "Design",
+      "instructor": "Emily White",
+      "desc": "Learn the principles of UI/UX design, including wireframing, prototyping, and user-centered design. This course covers design tools like Figma and Sketch, and teaches you how to create visually appealing and user-friendly interfaces for web and mobile applications."
+    },
+    {
+      "title": "Leadership Mastery: Leading with Confidence",
+      "img": "/images/courseImg/Leadership1.png",
+      "price": "$110.50",
+      "field": "Leadership",
+      "instructor": "John Maxwell",
+      "desc": "This course focuses on developing the key skills needed to lead teams and organizations effectively. Learn how to communicate with clarity, inspire people, and make strategic decisions in high-pressure environments. Ideal for aspiring managers and executives."
+    },
+    {
+      "title": "Effective Communication Strategies",
+      "img": "/images/courseImg/Communication1.png",
+      "price": "$95.00",
+      "field": "Communication",
+      "instructor": "Sarah Johnson",
+      "desc": "Master the art of communication in personal and professional settings. This course covers verbal and non-verbal communication, public speaking, active listening, and conflict resolution, helping you convey your message with impact and clarity."
+    },
+    {
+      "title": "Data Science Bootcamp: From Zero to Hero",
+      "img": "/images/courseImg/DataScience1.webp",
+      "price": "$150.00",
+      "field": "Data Science",
+      "instructor": "Dr. William Roberts",
+      "desc": "Get hands-on with the latest data science tools and techniques. This comprehensive bootcamp covers Python programming, data analysis, machine learning algorithms, and data visualization with tools like Pandas, NumPy, and Matplotlib. Perfect for those looking to break into the field."
+    },
+    {
+      "title": "Advanced Adobe Illustrator Techniques",
+      "img": "/images/courseImg/Design2.jpg",
+      "price": "$99.99",
+      "field": "Design",
+      "instructor": "Alex Green",
+      "desc": "Take your design skills to the next level with advanced Adobe Illustrator techniques. Learn how to create complex vector graphics, master typography, and produce professional designs for both print and digital platforms."
+    },
+    {
+      "title": "Mastering Graphic Design: From Basics to Advanced",
+      "img": "/images/courseImg/Design3.jpg",
+      "price": "$119.50",
+      "field": "Design",
+      "instructor": "Jessica Turner",
+      "desc": "A complete guide to graphic design principles and practices. Covering everything from color theory and composition to logo creation and branding. Ideal for aspiring graphic designers who want to build a strong portfolio."
+    },
+    {
+      "title": "Emotional Intelligence for Leaders",
+      "img": "/images/courseImg/Leadership2.jpg",
+      "price": "$105.00",
+      "field": "Leadership",
+      "instructor": "Daniel Goleman",
+      "desc": "Learn how to leverage emotional intelligence to improve your leadership skills. This course covers self-awareness, empathy, and relationship management, helping leaders navigate complex interpersonal dynamics and inspire their teams."
+    },
+    {
+      "title": "Strategic Leadership: The Art of Leading in Business",
+      "img": "/images/courseImg/Leadership3.png",
+      "price": "$130.75",
+      "field": "Leadership",
+      "instructor": "Michael Porter",
+      "desc": "Gain insights into strategic leadership and learn how to align organizational vision with business strategies. This course is designed for business leaders who want to improve their strategic decision-making skills and drive company growth."
+    },
+    {
+      "title": "Negotiation and Persuasion Skills",
+      "img": "/images/courseImg/Communication2.webp",
+      "price": "$98.99",
+      "field": "Communication",
+      "instructor": "Roger Dawson",
+      "desc": "Learn how to negotiate effectively in both personal and professional contexts. This course covers persuasive communication techniques, conflict resolution, and practical strategies for achieving win-win outcomes in any negotiation."
+    },
+    {
+      "title": "Machine Learning A-Z™: Hands-On Python & R In Data Science",
+      "img": "/images/courseImg/DataScience2.jpg",
+      "price": "$140.00",
+      "field": "Data Science",
+      "instructor": "Kirill Eremenko",
+      "desc": "Learn how to build machine learning models using Python and R. This course takes you through supervised and unsupervised learning, regression, classification, and deep learning techniques, with practical, hands-on projects."
+    },
+    {
+      "title": "Public Speaking Masterclass",
+      "img": "/images/courseImg/Communication3.png",
+      "price": "$115.00",
+      "field": "Communication",
+      "instructor": "Chris Anderson",
+      "desc": "Overcome your fear of public speaking and learn how to deliver powerful presentations. This course provides practical tips on speechwriting, stage presence, and engaging your audience, whether you're speaking to small groups or large audiences."
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  ]
+  

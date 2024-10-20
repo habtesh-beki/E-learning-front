@@ -5,22 +5,42 @@ import { faApple,faStackOverflow ,faPaypal,faWindows , faDocker,faDribbble,faStr
 import Overview from "../overview/Overview";
  
 export default function MainDesktop(){
+  const [clickField , setClickField] = useState(0)
+  const [selectedField , setSelectedField] = useState('Web Development')
   const [webNich , setWebNich] = useState([])
   const [mostPopular , setMostPopular] = useState([])
-  const [Courses , setCourses] = useState([])
+  const [CoursesWeb , setCoursesWeb] = useState([])
   const [comment , setComment] = useState([])
+
+  const courses = [
+    'Web Development',
+    'Leadership',
+    'Data Science',
+    'Communication',
+    // 'Business Analytics & Intelligence',
+    'Design'
+  ];
+
+  const filteredWebNich = selectedField 
+  ? webNich.filter((list) => list.nich === selectedField)
+  : webNich; 
+ 
+  const filteredCourse = selectedField
+  ? CoursesWeb.filter((list) => list.field === selectedField)
+  : CoursesWeb;
+
 useEffect(() => {
   const fetchData = async () => {
  try{
-  const [webNichData, mostPopularData , courseData , commentData] =await Promise.all([
+  const [webNichData, mostPopularData , courseWebData , commentData] =await Promise.all([
     fetch('/data/webNich.json').then((response) => response.json()),
     fetch('/data/mostPopular.json').then((response) => response.json()),
-    fetch('/data/Courses.json').then((response) => response.json()),
+    fetch('/data/CoursesWeb.json').then((response) => response.json()),
     fetch('/data/comment.json').then((response) => response.json())
   ])
    setWebNich(webNichData) 
    setMostPopular(mostPopularData)
-   setCourses(courseData)
+   setCoursesWeb(courseWebData)
    setComment(commentData)
  }catch(error){
   console.error('Error fetching data:', error);
@@ -28,9 +48,15 @@ useEffect(() => {
   }
   fetchData()
 },[])
+
+
+function handleclickField(index,course){
+  setClickField(index)
+  setSelectedField(course)
+}
     var settings = {
         dots: false,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -45,20 +71,27 @@ useEffect(() => {
            <h3>From critical skills to technical topics, Udemy supports your professional development</h3>    
           </div> 
 
-          <ul className="course-list flex gap-5 cursor-pointer mt-12 font-bold text-color_text border-b pb-3">
-            <li className="active">Web Development</li>
-            <li>Leadership</li>
-            <li>Data Scince</li>
-            <li>Communication</li>
-            <li>Business Analaytics & intelligence</li>
-            <li>Disgen</li>
-          </ul> 
-          <ul className="flex gap-8 mt-4">
-          {webNich.map((list) => <WebList list = {list}/>)}
+      <ul className="course-list flex gap-5 cursor-pointer mt-12 font-bold text-color_text border-b pb-3">
+        {courses.map((course, index) => (
+        <li
+         
+          key={index}
+          onClick={() => handleclickField(index,course)} 
+          className={`${
+            clickField === index ? 'text-black' : 'text-color_text'
+          }`} 
+        >
+          {course}
+         </li>
+         ))}
+        </ul>
+          <ul className="flex gap-8 mt-4 ">
+            {/* webNich */}
+          {filteredWebNich.map((list) => <WebList list = {list}/>)}
           </ul>
-          <div className="mt-6 gap-2">
+          <div className="mt-6 gap-2 ">
             <Slider {...settings}>
-            {Courses.map(course => <Course course = {course} />)}
+            {filteredCourse.map(course => <Course course = {course} />)}
             </Slider>
           </div>
           <button className="border font-bold p-3 ml-2 border-black mt-8 hover:bg-bg_btn">Show All Web Development Course</button>
@@ -139,9 +172,10 @@ function Comment({com}){
     )
   }
   
+
   function WebList({list}){
     return (
-      <li className="flex flex-col px-4 items-center rounded-2xl bg-bg_btn cursor-pointer">
+      <li className="flex flex-col px-4 items-center rounded-2xl bg-bg_btn cursor-pointer ">
       <span>{list.type}</span>
       <span>{list.learner}</span>
       </li>

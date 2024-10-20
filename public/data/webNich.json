@@ -2,30 +2,105 @@
 [
   {
     "type": "Web Development",
-    "learner": "10M+ learner"
+    "learner": "10M+ learner",
+    "nich":"Web Development"
   },
   {
     "type": "JavaScript",
-    "learner": "12M+ learner"
+    "learner": "12M+ learner",
+    "nich":"Web Development"
   },
   {
     "type": "ReactJS",
-    "learner": "10M+ learner"
+    "learner": "10M+ learner",
+    "nich":"Web Development"
   },
   {
     "type": "iOS Development",
-    "learner": "10M+ learner"
+    "learner": "10M+ learner",
+    "nich":"Web Development"
   },
   {
     "type": "Java",
-    "learner": "10M+ learner"
+    "learner": "10M+ learner",
+    "nich":"Web Development"
   },
   {
     "type": "Android Development",
-    "learner": "10M+ learner"
+    "learner": "10M+ learner",
+    "nich":"Web Development"
   },
   {
     "type": "CSS",
-    "learner": "10M+ learner"
+    "learner": "10M+ learner",
+    "nich":"Web Development"
+  },
+  {
+    "type": "Leadership",
+    "learner": "10M+ learner",
+    "nich":"Leadership"
+  },
+  {
+    "type": "Management skills",
+    "learner": "12M+ learner",
+    "nich":"Leadership"
+  },
+  {
+    "type": "Project Management",
+    "learner": "10M+ learner",
+    "nich":"Leadership"
+  },
+  {
+    "type": "Data Science",
+    "learner": "10M+ learner",
+    "nich":"Data Science"
+  },
+
+  {
+    "type": "Machine Learning",
+    "learner": "10M+ learner",
+    "nich":"Data Science"
+  },
+  {
+    "type": "Personal Productivity",
+    "learner": "10M+ learner",
+    "nich":"Leadership"
+  },
+  {
+    "type": "Presentation Skill",
+    "learner": "12M+ learner",
+    "nich":"Communication"
+  },
+  {
+    "type": "Public speaking",
+    "learner": "10M+ learner",
+    "nich":"Communication"
+  },
+
+  {
+    "type": "Personal Productivity",
+    "learner": "10M+ learner",
+    "nich":"Leadership"
+  },
+  {
+    "type": "Presentation Skill",
+    "learner": "12M+ learner",
+    "nich":"Communication"
+  },
+  {
+    "type": "Python",
+    "learner": "12M+ learner",
+    "nich":"Data Science"
+  },
+  {
+    "type": "graphic disgn",
+    "learner": "10M+ learner",
+    "nich":"Design"
+  },
+  {
+    "type": "illustrator",
+    "learner": "12M+ learner",
+    "nich":"Design"
   }
+  
 ]
