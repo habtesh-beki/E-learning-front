@@ -1,8 +1,9 @@
-import { useState , useEffect } from "react";
+import { useState , useEffect, useRef } from "react";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faApple,faStackOverflow ,faPaypal,faWindows , faDocker,faDribbble,faStripe,faWordpress,faDiscord} from '@fortawesome/free-brands-svg-icons';
 import Overview from "../overview/Overview";
+import { useNavigate } from "react-router-dom";
  
 export default function MainDesktop(){
   const [clickField , setClickField] = useState(0)
@@ -17,9 +18,10 @@ export default function MainDesktop(){
     'Leadership',
     'Data Science',
     'Communication',
-    // 'Business Analytics & Intelligence',
     'Design'
   ];
+ 
+  
 
   const filteredWebNich = selectedField 
   ? webNich.filter((list) => list.nich === selectedField)
@@ -86,7 +88,6 @@ function handleclickField(index,course){
          ))}
         </ul>
           <ul className="flex gap-8 mt-4 ">
-            {/* webNich */}
           {filteredWebNich.map((list) => <WebList list = {list}/>)}
           </ul>
           <div className="mt-6 gap-2 ">
@@ -94,7 +95,7 @@ function handleclickField(index,course){
             {filteredCourse.map(course => <Course course = {course} />)}
             </Slider>
           </div>
-          <button className="border font-bold p-3 ml-2 border-black mt-8 hover:bg-bg_btn">Show All Web Development Course</button>
+          <button className="border font-bold p-3 ml-2 border-black mt-8 hover:bg-bg_btn">Show More {selectedField} Course</button>
           <div className="flex flex-col items-center mt-16 mb-16">
             <h2 className="text-xl">Tursted by over 16,000 companies and milion of learner in the world</h2>
             <div className="flex text-5xl gap-20 mt-6">
@@ -162,12 +163,63 @@ function Comment({com}){
   }
   
   function Course({course}){
+    const navigate = useNavigate();
+    const [showDescription, setShowDescription] = useState(false);
+  const [descriptionPosition, setDescriptionPosition] = useState('right'); // 'left' or 'right'
+  const courseRef = useRef(null);
+
+  const handleClick = () => {
+    localStorage.setItem('selectedCourse', JSON.stringify({
+      id:course.id,
+      img: course.img,
+      title: course.title,
+      instructor: course.instructor
+    }))
+
+    navigate('/tutorial')
+  }
+
+  const handleMouseEnter = () => {
+    if (courseRef.current) {
+      const rect = courseRef.current.getBoundingClientRect();
+      const spaceOnLeft = rect.left;
+      const spaceOnRight = window.innerWidth - rect.right;
+
+      // If there's more space on the left side than the right, position description on the left
+      if (spaceOnLeft > spaceOnRight) {
+        setDescriptionPosition('left');
+      } else {
+        setDescriptionPosition('right');
+      }
+      setShowDescription(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setShowDescription(false);
+  };
     return (
-      <div className="flex flex-col border h-80 rounded-lg m-2 cursor-pointer gap-2">
+      <div className="flex relative flex-col border h-80 rounded-lg m-2 cursor-pointer gap-2"
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      ref={courseRef}
+      >
          <img src={course.img} alt={course.image} className="w-full h-40 rounded-t-lg"/>
         <span className="font-bold text-sm mt-3 pl-4">{course.title}</span>
         <span className="text-sm pl-4">{course.instructor}</span>
         <span className="text-sm pl-4 font-bold">{course.price}</span>
+  
+        {showDescription && (
+        <div 
+          className={`absolute top-0  ${descriptionPosition === 'left' ? 'right-full mr-4' : 'left-full ml-4'} 
+          w-72  bg-white shadow-lg border rounded-lg h-80 bg-white z-10 p-6`}
+        >
+          < p className="font-bold text-sm mt-3 pl-4 mb-4">{course.title}</p>
+          <p className="text-sm">{course.desc}</p>
+          <button className="w-full h-10 bg-bg_google hover:bg-bg_googleh text-white">Add to Cart</button>
+        </div>
+      )}
       </div>  
     )
   }

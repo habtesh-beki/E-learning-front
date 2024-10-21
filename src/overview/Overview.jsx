@@ -1,6 +1,6 @@
 export default function Overview(){
     return (
-        <div className='flex justify-center'>
+        <div className='hidden md:flex justify-center'>
         <div className='w-5/6 h-96 bg-gray-200 relative bg-bg_photo'>
           <div className='clip-background-des absolute right-0 h-96 w-2/4'> </div>
           <img src="./images/photo.png" alt="photo img" className='h-96 absolute right-36' />

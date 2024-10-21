@@ -2,26 +2,35 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faApple,faStackOverflow ,faPaypal,faWindows , faDocker,faStripe,faWordpress,faDiscord} from '@fortawesome/free-brands-svg-icons';
+// const typeCorse = [
+//     {
+//         name:'Web Development',
+//     },
+//     {
+//         name:'Leadership',
+//     },
+//     {
+//         name:'Data Scince',
+//     },
+//     {
+//         name:'Communication',
+//     },
+//     {
+//         name:'Business Analaytics & intelligence',
+//     },
+//     {
+//         name:'Disgn',
+//     },
+// ]
 const typeCorse = [
-    {
-        name:'Web Development',
-    },
-    {
-        name:'Leadership',
-    },
-    {
-        name:'Data Scince',
-    },
-    {
-        name:'Communication',
-    },
-    {
-        name:'Business Analaytics & intelligence',
-    },
-    {
-        name:'Disgn',
-    },
-]
+  { name: 'Web Development' },
+  { name: 'Leadership' },
+  { name: 'Data Science' },
+  { name: 'Communication' },
+  { name: 'Business Analytics & Intelligence' },
+  { name: 'Design' },
+];
+
 
 export default function MainMobile(){
 
@@ -61,10 +70,10 @@ useEffect(() => {
             </div>
            <select className='outline-none'>{typeCorse.map((type) => <option>{type.name}</option>) }</select>
            <ul className="flex gap-6 mt-4 overflow-scroll no-scrollbar">
-          {webNich.map((list) => <WebList list = {list}/>)}
+          {webNich.map((list) => <WebList list = {list} key={index}/>)}
           </ul>
           <div className="mt-6 gap-2 flex overflow-x-scroll no-scrollbar">
-            {Courses.map(course => <Course course = {course} />)}
+            {Courses.map(course => <Course course = {course} key={index}/>)}
           </div>
           <button className='border mt-4 w-4/5 py-2 ml-6 mb-8 border-black'>Show All Webdevelopment</button>
           <div className="flex flex-col items-center p-4 mt-16 mb-16">
@@ -85,7 +94,7 @@ useEffect(() => {
               <h1 className="text-2xl">Most Popular</h1>
             </div>
             <div className="flex mt-6 gap-2 overflow-x-scroll no-scrollbar">
-            {mostPopular.map(popcourse => <PopularCourse popcourse = {popcourse} />)}
+            {mostPopular.map(popcourse => <PopularCourse popcourse = {popcourse} key={index}/>)}
           </div>
           </div>
           <div className="mt-10 mb-10">
@@ -93,7 +102,7 @@ useEffect(() => {
                <h1>See what others are achieving through learning</h1>
             </div>
            <div className="flex gap-4 overflow-x-scroll no-scrollbar">
-          {comment.map(com => <Comment com = {com} />)}
+          {comment.map(com => <Comment com = {com} key={index}/>)}
            </div>   
           </div>
         </div>
@@ -129,11 +138,12 @@ function PopularCourse({popcourse}){
 function Course({course}){
    
     return (
-      <div className="flex flex-col min-w-full ml-2 mr-2 border  h-72  m-2 cursor-pointer">
+      <div className="flex  flex-col min-w-full ml-2 mr-2 border  h-72  m-2 cursor-pointer">
          <img src={course.img} alt={course.image} className="w-full h-40 "/>
         <span className="font-bold text-lg pl-4">{course.title}</span>
         <span className="pl-4">{course.instructor}</span>
         <span className="pl-4 font-bold">{course.price}</span>
+
       </div>  
     )
   }
