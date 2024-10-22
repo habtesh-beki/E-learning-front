@@ -21,7 +21,7 @@ export default function MainDesktop(){
     'Design'
   ];
  
-  
+  const mostPop = CoursesWeb.slice(0,4);
 
   const filteredWebNich = selectedField 
   ? webNich.filter((list) => list.nich === selectedField)
@@ -116,7 +116,8 @@ function handleclickField(index,course){
             </div>
             <div className="mt-6 gap-2">
             <Slider {...settings}>
-            {mostPopular.map(popcourse => <PopularCourse popcourse = {popcourse} />)}
+              {/* mostPopular */}
+            {mostPop.map(popcourse => <PopularCourse popcourse = {popcourse} />)}
             </Slider>
           </div>
           </div>
@@ -152,30 +153,18 @@ function Comment({com}){
   }
   
   function PopularCourse({popcourse}){
-    return (
-      <div className="flex flex-col border h-80 rounded-lg m-2 cursor-pointer gap-2">
-    <img src={popcourse.img} alt={popcourse.image} className="w-full h-40 rounded-t-lg"/>
-   <span className="font-bold text-sm pl-4">{popcourse.title}</span>
-   <span className="text-sm pl-4">{popcourse.instructor}</span>
-   <span className="pl-4 font-bold">{popcourse.price}</span>
-   </div> 
-    )
-  }
-  
-  function Course({course}){
     const navigate = useNavigate();
     const [showDescription, setShowDescription] = useState(false);
-  const [descriptionPosition, setDescriptionPosition] = useState('right'); // 'left' or 'right'
+  const [descriptionPosition, setDescriptionPosition] = useState('right'); 
   const courseRef = useRef(null);
 
   const handleClick = () => {
     localStorage.setItem('selectedCourse', JSON.stringify({
-      id:course.id,
-      img: course.img,
-      title: course.title,
-      instructor: course.instructor
+      id:popcourse.id,
+      img: popcourse.img,
+      title: popcourse.title,
+      instructor: popcourse.instructor
     }))
-
     navigate('/tutorial')
   }
 
@@ -185,7 +174,67 @@ function Comment({com}){
       const spaceOnLeft = rect.left;
       const spaceOnRight = window.innerWidth - rect.right;
 
-      // If there's more space on the left side than the right, position description on the left
+      if (spaceOnLeft > spaceOnRight) {
+        setDescriptionPosition('left');
+      } else {
+        setDescriptionPosition('right');
+      }
+      setShowDescription(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setShowDescription(false);
+  };
+
+    return (
+      <div className="flex relative flex-col border h-80 rounded-lg m-2 cursor-pointer gap-2"
+      onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      ref={courseRef}
+      >
+    <img src={popcourse.img} alt={popcourse.image} className="w-full h-40 rounded-t-lg"/>
+   <span className="font-bold text-sm pl-4">{popcourse.title}</span>
+   <span className="text-sm pl-4">{popcourse.instructor}</span>
+   <span className="pl-4 font-bold">{popcourse.price}</span>
+
+   {showDescription && (
+        <div 
+          className={`absolute top-0  ${descriptionPosition === 'left' ? 'right-full mr-4' : 'left-full ml-4'} 
+          w-72  shadow-lg border rounded-lg h-80 bg-white z-10 p-6`}
+        >
+          < p className="font-bold text-sm mt-3 pl-4 mb-4">{popcourse.title}</p>
+          <p className="text-sm">{popcourse.desc}</p>
+          <button className="w-full h-10 bg-bg_google hover:bg-bg_googleh text-white">Add to Cart</button>
+        </div>
+      )}
+   </div> 
+    )
+  }
+  
+  function Course({course}){
+    const navigate = useNavigate();
+    const [showDescription, setShowDescription] = useState(false);
+  const [descriptionPosition, setDescriptionPosition] = useState('right'); 
+  const courseRef = useRef(null);
+
+  const handleClick = () => {
+    localStorage.setItem('selectedCourse', JSON.stringify({
+      id:course.id,
+      img: course.img,
+      title: course.title,
+      instructor: course.instructor
+    }))
+    navigate('/tutorial')
+  }
+
+  const handleMouseEnter = () => {
+    if (courseRef.current) {
+      const rect = courseRef.current.getBoundingClientRect();
+      const spaceOnLeft = rect.left;
+      const spaceOnRight = window.innerWidth - rect.right;
+
       if (spaceOnLeft > spaceOnRight) {
         setDescriptionPosition('left');
       } else {

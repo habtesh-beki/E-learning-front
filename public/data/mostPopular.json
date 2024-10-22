@@ -1,5 +1,6 @@
 [
     {
+      "id":1,
       "title": "Angular - The Complete Guide (2024 Edition)",
       "img": "/images/courseImg/Angular1.jpg",
       "price": "$120.66",
@@ -7,6 +8,7 @@
       "desc": "Angular is a comprehensive JavaScript framework for building complex, enterprise-level web applications. In this course, you will learn the essentials of Angular, including components, services, routing, and data binding, to develop scalable and maintainable apps."
     },
     {
+      "id":2,
       "title": "The Complete JavaScript Course 2024: From Zero to Expert!",
       "img": "/images/courseImg/Javascript.jpg",
       "price": "$130.88",
@@ -14,6 +16,7 @@
       "desc": "JavaScript is the language of the web, used to make web pages interactive. This course covers the basics of JavaScript, including variables, functions, DOM manipulation, and events, to create dynamic and responsive websites."
     },
     {
+      "id":3,
       "title": "100 Days of Code: The Complete Python Pro Bootcamp",
       "img": "/images/courseImg/python1.webp",
       "price": "$100.98",
@@ -21,6 +24,7 @@
       "desc": "Python is a beginner-friendly programming language known for its simplicity and versatility. In this course, you will learn the fundamentals of Python, including variables, data types, loops, and functions, and how to use Python to solve real-world problems."
     },
     {
+      "id":4,
       "title": "React - The Complete Guide 2024 (incl. Next.js, Redux)",
       "img": "/images/courseImg/reactjs1.jpg",
       "price": "$90.78",
