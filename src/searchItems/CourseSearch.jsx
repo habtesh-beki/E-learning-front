@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Fuse from 'fuse.js';
+import { useNavigate } from "react-router-dom";
 
 export default function CourseSearch() {
   const [loading, setLoading] = useState(true);
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [allCourses, setAllCourses] = useState([]);
   const [searchParams] = useSearchParams(); 
+  
 
   const searchTerm = searchParams.get('query') || ''; 
 
@@ -26,7 +28,7 @@ export default function CourseSearch() {
   useEffect(() => {
     if (searchTerm) {
       const fuse = new Fuse(allCourses, {
-        keys: ['title', 'instructor', 'desc'],
+        keys: ['title', 'instructor', 'desc' , 'field'],
         threshold: 0.3,
       });
 
@@ -38,7 +40,7 @@ export default function CourseSearch() {
   }, [searchTerm, allCourses]); 
 
   return (
-    <div className="h-screen w-full">
+    <div className="min-h-screen h-auto w-full">
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -48,10 +50,24 @@ export default function CourseSearch() {
   );
 }
 
+
+
 function Search({ cour }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    localStorage.setItem('selectedCourse', JSON.stringify({
+      id:cour.id,
+      img: cour.img,
+      title: cour.title,
+      instructor: cour.instructor
+    }))
+    navigate('/tutorial')
+  }
+
   return (
-    <div className="flex flex-col m-10 items-center">
-      <div className="flex gap-4 border w-7/12 cursor-pointer hover:border-black">
+    <div className="flex  flex-col m-10 items-center" >
+      <div className="flex gap-4 border w-7/12 cursor-pointer hover:border-black" onClick={handleClick}>
         <img className="w-48 h-48" src={cour.img} alt={cour.title} />
         <div>
           <div className="text-xl mb-2">{cour.title}</div>

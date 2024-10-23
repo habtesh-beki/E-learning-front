@@ -3,14 +3,13 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
-import CourseSearch from './searchItems/CourseSearch.jsx'
-// import Tutorial from './Tutorial/Tutorial.jsx'
+// import TutorialMob from './Tutorial/TutorialMob.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
     <App />
     </BrowserRouter>
-    {/* <CourseSearch /> */}
+{/* <TutorialMob /> */}
   </StrictMode>,
 )

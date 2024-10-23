@@ -2,54 +2,34 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faApple,faStackOverflow ,faPaypal,faWindows , faDocker,faStripe,faWordpress,faDiscord} from '@fortawesome/free-brands-svg-icons';
-// const typeCorse = [
-//     {
-//         name:'Web Development',
-//     },
-//     {
-//         name:'Leadership',
-//     },
-//     {
-//         name:'Data Scince',
-//     },
-//     {
-//         name:'Communication',
-//     },
-//     {
-//         name:'Business Analaytics & intelligence',
-//     },
-//     {
-//         name:'Disgn',
-//     },
-// ]
+import { useNavigate } from 'react-router-dom';
+import OverviewMob from '../overview/OverviewMob';
+
 const typeCorse = [
   { name: 'Web Development' },
   { name: 'Leadership' },
   { name: 'Data Science' },
   { name: 'Communication' },
-  { name: 'Business Analytics & Intelligence' },
   { name: 'Design' },
 ];
 
 
 export default function MainMobile(){
-
+  const [selectedField , setSelectedField] = useState('Web Development')
   const [webNich , setWebNich] = useState([])
-  const [mostPopular , setMostPopular] = useState([])
   const [Courses , setCourses] = useState([])
   const [comment , setComment] = useState([])
 
 useEffect(() => {
   const fetchData = async () => {
  try{
-  const [webNichData, mostPopularData , courseData , commentData] =await Promise.all([
+ 
+  const [webNichData , courseData , commentData] =await Promise.all([
     fetch('/data/webNich.json').then((response) => response.json()),
-    fetch('/data/mostPopular.json').then((response) => response.json()),
-    fetch('/data/Courses.json').then((response) => response.json()),
+    fetch('/data/CoursesWeb.json').then((response) => response.json()),
     fetch('/data/comment.json').then((response) => response.json())
   ])
    setWebNich(webNichData) 
-   setMostPopular(mostPopularData)
    setCourses(courseData)
    setComment(commentData)
  }catch(error){
@@ -58,22 +38,44 @@ useEffect(() => {
   }
   fetchData()
 },[])
+
+ function handleSelectChange(event) {
+  const selectedField = event.target.value; 
+  setSelectedField(selectedField); 
+}
+
+const filteredWebNich = selectedField 
+? webNich.filter((list) => list.nich === selectedField)
+: webNich; 
+
+const filteredCourse = selectedField
+? Courses.filter((list) => list.field === selectedField)
+: Courses;
+
+const mostPop = Courses.slice(0,4);
     return (
         <div className="block md:hidden px-2">
+           <OverviewMob />
             <div className='relative'>
                 <input type="text" placeholder="What do you want to learn ?" className="outline-none border w-4/5 border-black px-2  py-2 ml-10 mt-16"/>
-                <FontAwesomeIcon icon={faMagnifyingGlass} className='absolute bottom-3 right-7'/>
+                <FontAwesomeIcon icon={faMagnifyingGlass} className='absolute bottom-3 right-11'/>
             </div>
             <div className='p-3 mt-10 border-b'>
             <h1 className="text-xl font-bold">All the skills you need in one place</h1>
             <h3>From critical skills to technical topics, Udemy supports your professional development</h3> 
             </div>
-           <select className='outline-none'>{typeCorse.map((type) => <option>{type.name}</option>) }</select>
+           <select className='outline-none m-2 border border-black text-center p-3 w-5/6 ml-6'
+           value={selectedField}
+           onChange={handleSelectChange}
+           >{typeCorse.map((type) => <option 
+            key={type.name} value={type.name}
+           className='border-b w-3/4'>{type.name}</option>) }</select>
            <ul className="flex gap-6 mt-4 overflow-scroll no-scrollbar">
-          {webNich.map((list) => <WebList list = {list} key={index}/>)}
+          {filteredWebNich.map((list ,index) => <WebList list = {list} key={index}/>)}
           </ul>
           <div className="mt-6 gap-2 flex overflow-x-scroll no-scrollbar">
-            {Courses.map(course => <Course course = {course} key={index}/>)}
+            {/* Courses */}
+            {filteredCourse.map((course ,index)=> <Course course = {course} key={index}/>)}
           </div>
           <button className='border mt-4 w-4/5 py-2 ml-6 mb-8 border-black'>Show All Webdevelopment</button>
           <div className="flex flex-col items-center p-4 mt-16 mb-16">
@@ -94,7 +96,7 @@ useEffect(() => {
               <h1 className="text-2xl">Most Popular</h1>
             </div>
             <div className="flex mt-6 gap-2 overflow-x-scroll no-scrollbar">
-            {mostPopular.map(popcourse => <PopularCourse popcourse = {popcourse} key={index}/>)}
+            {mostPop.map((popcourse ,index) => <PopularCourse popcourse = {popcourse} key={index}/>)}
           </div>
           </div>
           <div className="mt-10 mb-10">
@@ -102,7 +104,7 @@ useEffect(() => {
                <h1>See what others are achieving through learning</h1>
             </div>
            <div className="flex gap-4 overflow-x-scroll no-scrollbar">
-          {comment.map(com => <Comment com = {com} key={index}/>)}
+          {comment.map((com ,index) => <Comment com = {com} key={index}/>)}
            </div>   
           </div>
         </div>
@@ -125,8 +127,19 @@ function Comment({com}){
 }
 
 function PopularCourse({popcourse}){
+  const navigate = useNavigate()
+  const handleClick = () => {
+    localStorage.setItem('selectedCourse', JSON.stringify({
+      id:popcourse.id,
+      img: popcourse.img,
+      title: popcourse.title,
+      instructor: popcourse.instructor
+    }))
+    navigate('/tutorialmob')
+  }
   return (
-    <div className="flex flex-col min-w-full border h-72 rounded-lg m-2 cursor-pointer">
+    <div className="flex flex-col min-w-full border h-72 rounded-lg m-2 cursor-pointer"
+    onClick={handleClick}>
   <img src={popcourse.img} alt={popcourse.image} className="w-full h-40 rounded-t-lg"/>
  <span className="font-bold text-lg pl-4">{popcourse.title}</span>
  <span className="pl-4">{popcourse.instructor}</span>
@@ -136,9 +149,20 @@ function PopularCourse({popcourse}){
 }
 
 function Course({course}){
-   
+  const navigate = useNavigate()
+  const handleClick = () => {
+    localStorage.setItem('selectedCourse', JSON.stringify({
+      id:course.id,
+      img: course.img,
+      title: course.title,
+      instructor: course.instructor
+    }))
+    navigate('/tutorialmob')
+  }
     return (
-      <div className="flex  flex-col min-w-full ml-2 mr-2 border  h-72  m-2 cursor-pointer">
+      <div className="flex  flex-col min-w-full ml-2 mr-2 border  h-72  m-2 cursor-pointer"
+      onClick={handleClick}
+      >
          <img src={course.img} alt={course.image} className="w-full h-40 "/>
         <span className="font-bold text-lg pl-4">{course.title}</span>
         <span className="pl-4">{course.instructor}</span>

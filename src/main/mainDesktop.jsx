@@ -116,7 +116,6 @@ function handleclickField(index,course){
             </div>
             <div className="mt-6 gap-2">
             <Slider {...settings}>
-              {/* mostPopular */}
             {mostPop.map(popcourse => <PopularCourse popcourse = {popcourse} />)}
             </Slider>
           </div>
