@@ -8,7 +8,10 @@ import LogIn from "./logIn/login";
 import Tutorial from './Tutorial/Tutorial'
 import Signup from "./Signup/signup";
 import CourseSearch from "./searchItems/CourseSearch";
-import TutorialMob from './Tutorial/TutorialMob'
+import TutorialMob from './Tutorial/TutorialMob';
+import SearchMobile from './searchItems/SearchMobile'
+import SignupMobile from "./Signup/SignupMobile";
+import LoginMobile from "./logIn/logInMobile";
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
         <Route path="/tutorial" element ={<Tutorial />} />
         <Route path="/tutorialmob" element = {<TutorialMob />} />
         <Route path="/searchCourse" element = {<CourseSearch />} />
+        <Route path="/searchMobile" element = {<SearchMobile />} />
+        <Route path="/signupmobile" element ={<SignupMobile />} />
+        <Route path="/loginmobile" element = {<LoginMobile />} />
       </Routes>
       <Footer />
     </>

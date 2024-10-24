@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faApple,faStackOverflow ,faPaypal,faWindows , faDocker,faStripe,faWordpress,faDiscord} from '@fortawesome/free-brands-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import OverviewMob from '../overview/OverviewMob';
 
 const typeCorse = [
@@ -19,6 +19,26 @@ export default function MainMobile(){
   const [webNich , setWebNich] = useState([])
   const [Courses , setCourses] = useState([])
   const [comment , setComment] = useState([])
+ 
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchCourse = () => {
+    localStorage.setItem('searchCourse', searchTerm); 
+    navigate(`/searchMobile?query=${encodeURIComponent(searchTerm)}`);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearchCourse();
+    }
+  };
+
+ function handleClickSearch(){
+  handleSearchCourse()
+  }
+
 
 useEffect(() => {
   const fetchData = async () => {
@@ -55,10 +75,17 @@ const filteredCourse = selectedField
 const mostPop = Courses.slice(0,4);
     return (
         <div className="block md:hidden px-2">
+       
            <OverviewMob />
             <div className='relative'>
-                <input type="text" placeholder="What do you want to learn ?" className="outline-none border w-4/5 border-black px-2  py-2 ml-10 mt-16"/>
-                <FontAwesomeIcon icon={faMagnifyingGlass} className='absolute bottom-3 right-11'/>
+                <input type="text" placeholder="What do you want to learn ?" className="outline-none border w-4/5 border-black px-2  py-2 ml-10 mt-16"
+                 value={searchTerm}
+                 onChange={(e) => setSearchTerm(e.target.value)}
+                 onKeyDown={handleKeyDown} 
+                />
+                <FontAwesomeIcon icon={faMagnifyingGlass} className='absolute bottom-3 right-11' 
+                onClick={handleClickSearch}
+                />
             </div>
             <div className='p-3 mt-10 border-b'>
             <h1 className="text-xl font-bold">All the skills you need in one place</h1>
